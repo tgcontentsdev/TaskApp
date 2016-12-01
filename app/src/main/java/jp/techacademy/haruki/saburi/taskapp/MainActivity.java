@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
 
                 Task task = (Task) parent.getAdapter().getItem(position);
+
+                Log.d("task", task.toString());
 
                 Intent intent = new Intent(MainActivity.this, InputActivity.class);
                 intent.putExtra(EXTRA_TASK, task);
@@ -140,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             task.setId(mTaskRealmResults.get(i).getId());
             task.setTitle(mTaskRealmResults.get(i).getTitle());
             task.setContents(mTaskRealmResults.get(i).getContents());
+            task.setCategory(mTaskRealmResults.get(i).getCategory());
             task.setDate(mTaskRealmResults.get(i).getDate());
 
             taskArrayList.add(task);
